@@ -1,7 +1,9 @@
 package com.xpack.hibernate;
 
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Stream;
 
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -22,6 +24,8 @@ public class App
 {
     public static void main( String[] args ) throws SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException, SystemException
     {
+    	String [] t= {"test","haha"};
+    	
     	Name names = new Name();
     	names.setFirst_name("xpack");
     	names.setLast_name("xp");

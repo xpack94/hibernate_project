@@ -6,10 +6,13 @@
    
       <property name = "hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
       <property name = "hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-      <property name = "hibernate.connection.url">jdbc:mysql://localhost:3306/Students</property>
+      <property name = "hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_ig_clone</property>
       <property name = "hibernate.connection.username">root</property>
       <property name = "hibernate.connection.password">hacker9494</property>
       <property name="hbm2ddl.auto">update</property>
       <property name="show_sql">true</property>
+     <mapping class="com.xpack.insta_copy.insta_copy_tables.Users"/>
+     <mapping class="com.xpack.insta_copy.insta_copy_tables.Photos"/>
+    
    </session-factory>
 </hibernate-configuration>
