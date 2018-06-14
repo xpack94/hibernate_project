@@ -22,10 +22,13 @@ public class MainApp {
 		Users user1=new Users("xpack");
 		Users user2=new Users("billy");
 		Users user3=new Users("nate");
+		Users user4=new Users("elliote");
+		
 		List<Users> users =new ArrayList<Users>();
 		users.add(user1);
 		users.add(user2);
 		users.add(user3);
+		users.add(user4);
 		
 		new MainApp().saveUsers(users);
 		
