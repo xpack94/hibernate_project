@@ -37,5 +37,22 @@
 </dependency>
     
     
+    <!-- https://mvnrepository.com/artifact/org.ehcache/ehcache -->
+<dependency>
+    <groupId>org.ehcache</groupId>
+    <artifactId>ehcache</artifactId>
+    <version>3.5.2</version>
+</dependency>
+    
+ <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-ehcache</artifactId>
+    <version>4.1.6.Final</version>
+</dependency>
+
+    
+    
+    
   </dependencies>
 </project>

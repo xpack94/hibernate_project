@@ -1,10 +1,13 @@
 package com.xpack.insta_copy.insta_copy_tables;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +24,8 @@ public class Photos {
 	@OneToOne
 	private Users user_id;
 	
+	@OneToMany(mappedBy="photo")
+	private List<Comments> comments=new ArrayList<Comments>();
 	
 	
 	public Photos( String image_url, Users user_id) {
@@ -45,6 +50,14 @@ public class Photos {
 	}
 	public void setUser_id(Users user_id) {
 		this.user_id = user_id;
+	}
+	
+	
+	public List<Comments> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
 	}
 	@Override
 	public String toString() {

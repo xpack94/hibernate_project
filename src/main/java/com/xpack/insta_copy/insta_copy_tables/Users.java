@@ -29,6 +29,14 @@ public class Users {
 	@OneToMany(mappedBy="user_id")
 	List<Photos> photos =new ArrayList<Photos>();
 	
+	@OneToMany(mappedBy="user")
+	List<Comments> comments=new ArrayList<Comments>();
+	
+	@OneToMany(mappedBy="folowee_id")
+	List<Follows> followees =new ArrayList<Follows>();
+	
+	@OneToMany(mappedBy="folower_id")
+	List<Follows> followers =new ArrayList<Follows>();
 	
 	
 	//constructor
@@ -63,6 +71,43 @@ public class Users {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
+	
+	
+	
+	public List<Photos> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photos> photos) {
+		this.photos = photos;
+	}
+
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
+
+	
+	
+	public List<Follows> getFollowees() {
+		return followees;
+	}
+
+	public void setFollowees(List<Follows> followees) {
+		this.followees = followees;
+	}
+
+	public List<Follows> getFollowers() {
+		return followers;
+	}
+
+	public void setFollowers(List<Follows> followers) {
+		this.followers = followers;
+	}
+
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", username=" + username + ", created_at=" + created_at + "]";
