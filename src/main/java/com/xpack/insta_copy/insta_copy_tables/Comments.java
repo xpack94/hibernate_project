@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,9 +24,11 @@ public class Comments {
 	private Timestamp created_at;
 	
 	@OneToOne
+	@JoinColumn(name="user_id")
 	private Users user;
 	
 	@OneToOne
+	@JoinColumn(name="photo_id")
 	private Photos photo;
 
 	public Comments(String comment_text, Users user, Photos photo) {

@@ -23,7 +23,7 @@ public class Laptop {
 	@Column(name="laptopName")
 	private String laptop_name;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="student_id")
 	private Students student;
 	
 	
