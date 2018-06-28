@@ -2,20 +2,23 @@ package com.xpack.insta_copy.insta_copy_tables;
 
 import java.security.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
-@Table(name="users")
+
 @Entity
+@Table(name="users")
 public class Users {
 	@Column(name="id")
 	@Id @GeneratedValue
@@ -25,7 +28,8 @@ public class Users {
 	private String username;
 	
 	@Column(name="created_at",columnDefinition=" timestamp default now()")
-	private Timestamp created_at;
+	@Temporal(TemporalType.DATE)
+	private Date created_at;
 	
 	@OneToMany(mappedBy="user_id")
 	List<Photos> photos =new ArrayList<Photos>();
@@ -33,15 +37,19 @@ public class Users {
 	@OneToMany(mappedBy="user")
 	List<Comments> comments=new ArrayList<Comments>();
 	
-	@OneToMany(mappedBy="folowee_id")
+	@OneToMany(mappedBy="folowee_id",fetch=FetchType.LAZY)
 	List<Follows> followees =new ArrayList<Follows>();
 	
-	@OneToMany(mappedBy="folower_id")
+	@OneToMany(mappedBy="folower_id",fetch=FetchType.LAZY)
 	List<Follows> followers =new ArrayList<Follows>();
 	
 	
+	public Users() {
+		
+	}
+	
 	//constructor
-	public Users( String username, Timestamp created_at) {
+	public Users( String username, Date created_at) {
 		super();
 		this.username = username;
 		this.created_at = created_at;
@@ -66,10 +74,10 @@ public class Users {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Timestamp getCreated_at() {
+	public Date getCreated_at() {
 		return created_at;
 	}
-	public void setCreated_at(Timestamp created_at) {
+	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
 	

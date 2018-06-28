@@ -29,7 +29,7 @@ public class Photos {
 	@OneToMany(mappedBy="photo")
 	private List<Comments> comments=new ArrayList<Comments>();
 	
-	
+	public Photos() {}
 	public Photos( String image_url, Users user_id) {
 		super();
 		this.image_url = image_url;

@@ -22,7 +22,6 @@ public class crud_photos {
 			
 			
 		}catch(Exception e) {
-			System.out.println("can't create the session");
 			e.printStackTrace();
 		}finally {
 			this.session.close();

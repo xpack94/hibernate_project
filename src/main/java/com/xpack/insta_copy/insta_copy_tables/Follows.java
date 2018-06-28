@@ -2,6 +2,7 @@ package com.xpack.insta_copy.insta_copy_tables;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -24,8 +27,12 @@ public class Follows implements Serializable {
 	private Users folowee_id;
 	
 	@Column(name="created_at",columnDefinition="timestamp default now()")
-	private Timestamp created_at;
-
+	@Temporal(TemporalType.DATE)
+	private Date created_at;
+	public Follows() {
+		
+	}
+	
 	public Follows(Users folower_id, Users folowee_id) {
 		super();
 		this.folower_id = folower_id;
@@ -48,7 +55,7 @@ public class Follows implements Serializable {
 		this.folowee_id = folowee_id;
 	}
 
-	public Timestamp getCreated_at() {
+	public Date getCreated_at() {
 		return created_at;
 	}
 

@@ -1,6 +1,7 @@
 package com.xpack.insta_copy.insta_copy_tables;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="comments")
@@ -21,7 +24,8 @@ public class Comments {
 	private String comment_text;
 	
 	@Column(name="created_at",columnDefinition="timestamp default now()")
-	private Timestamp created_at;
+	@Temporal(TemporalType.DATE)
+	private Date created_at;
 	
 	@OneToOne
 	@JoinColumn(name="user_id")
@@ -31,6 +35,7 @@ public class Comments {
 	@JoinColumn(name="photo_id")
 	private Photos photo;
 
+	public Comments() {}
 	public Comments(String comment_text, Users user, Photos photo) {
 		super();
 		this.comment_text = comment_text;
@@ -54,7 +59,7 @@ public class Comments {
 		this.comment_text = comment_text;
 	}
 
-	public Timestamp getCreated_at() {
+	public Date getCreated_at() {
 		return created_at;
 	}
 

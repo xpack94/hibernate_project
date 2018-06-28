@@ -2,6 +2,7 @@ package com.xpack.insta_copy.models;
 
 
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -31,6 +32,27 @@ public class Crud_users {
 		}
 		
 	}
+	//update the user username
+	public void updateUserUsername(int userId,String username) {
+		try {
+			this.session =new SessionFactoryBuilder().getSessionFactory().openSession();
+			this.transaction=this.session.beginTransaction();
+			Query query = session.createQuery("from Users where id="+userId);
+			Users user=(Users)query.uniqueResult();
+			
+			user.setUsername(username);
+			session.update(user);
+			this.transaction.commit();
+			
+		}catch(Exception e) {
+			System.out.println("can't create session ");
+			e.printStackTrace();
+			
+		}finally {
+			this.session.close();
+		}
+	}
+	
 	
 	
 	
