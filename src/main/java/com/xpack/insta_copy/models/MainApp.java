@@ -3,12 +3,15 @@ package com.xpack.insta_copy.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.xpack.insta_copy.insta_copy_tables.Photos;
 import com.xpack.insta_copy.insta_copy_tables.Users;
 
 
 
 
 public class MainApp {
+	
+	
 	
 	public void createUsers() {
 		Users user1=new Users("xpack");
