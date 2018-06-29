@@ -37,8 +37,10 @@ public class MainApp {
 		
 		//new MainApp().createUsers();
 		//updating a user username
-		new Crud_users().updateUserUsername(1, "xpac");
+		//new Crud_users().updateUserUsername(1, "xpac");
 		
+		//deleting a user	
+		new Crud_users().deleteUser(3);
 		
 	}
 

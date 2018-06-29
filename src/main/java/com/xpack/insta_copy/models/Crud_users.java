@@ -45,12 +45,29 @@ public class Crud_users {
 			this.transaction.commit();
 			
 		}catch(Exception e) {
-			System.out.println("can't create session ");
 			e.printStackTrace();
 			
 		}finally {
 			this.session.close();
 		}
+	}
+	
+	public void deleteUser(int userId) {
+		try {
+			this.session =new SessionFactoryBuilder().getSessionFactory().openSession();
+			this.transaction=this.session.beginTransaction();
+			Query query = session.createQuery("from Users where id="+userId);
+			Users user=(Users)query.uniqueResult();
+			session.delete(user);
+			this.transaction.commit();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			this.session.close();
+		}
+		
 	}
 	
 	
