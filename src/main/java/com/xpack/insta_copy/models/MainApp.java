@@ -11,7 +11,15 @@ import com.xpack.insta_copy.insta_copy_tables.Users;
 
 public class MainApp {
 	
-	
+	public void createPhotos() {
+		List<Users> users = new Crud_users().getUsers();
+		List<Photos>photos=new ArrayList<Photos>();
+		for (Users user:users) {
+			photos.add(new Photos("/photo/user/"+user.getUsername(),user));
+			
+		}
+		this.saveElements(photos);
+	}
 	
 	public void createUsers() {
 		Users user1=new Users("xpack");
@@ -35,7 +43,19 @@ public class MainApp {
 			userOps.createUser(u);
 		}
 	}
-
+	
+	//saving elements  in the database
+	//these elements can be of type Users of Photos
+		public <T> void saveElements(List<T> elements) {
+			for(T elm:elements) {
+				if(elm.getClass().isInstance(Users.class)) {
+					new Crud_users().createUser((Users)elm);
+				}else {
+					new crud_photos().createPhoto((Photos)elm);
+				}
+			}
+		}
+	
 	public static void main(String[] args) {
 		
 		//new MainApp().createUsers();
@@ -43,7 +63,10 @@ public class MainApp {
 		//new Crud_users().updateUserUsername(1, "xpac");
 		
 		//deleting a user	
-		new Crud_users().deleteUser(3);
+		//new Crud_users().deleteUser(3);
+		
+		//adding photos
+		new MainApp().createPhotos();
 		
 	}
 

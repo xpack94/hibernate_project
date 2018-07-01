@@ -2,6 +2,8 @@ package com.xpack.insta_copy.models;
 
 
 
+import java.util.ArrayList;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -72,6 +74,21 @@ public class Crud_users {
 	
 	
 	
-	
+	public ArrayList<Users> getUsers(){
+		ArrayList<Users> users=null;
+		try {
+			this.session =new SessionFactoryBuilder().getSessionFactory().openSession();
+			this.transaction=this.session.beginTransaction();
+			Query query = this.session.createQuery("from Users");
+			users=(ArrayList<Users>)query.list();
+			this.transaction.commit();
+			return users;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			this.session.close();
+		}
+		return null;
+	}
 	
 }
